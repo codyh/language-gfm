@@ -12,6 +12,10 @@
 ]
 'patterns': [
   {
+    'match': '\\\\.'
+    'name': 'constant.character.escape.gfm'
+  }
+  {
     'begin': '(?<=^|[^\\w\\d\\*])\\*\\*\\*(?!$|\\*|\\s)'
     'end': '(?<!^|\\s)\\*\\*\\**\\*(?=$|[^\\w|\\d])'
     'name': 'markup.bold.italic.gfm'
@@ -47,9 +51,9 @@
     'name': 'markup.strike.gfm'
   }
   {
-    'begin': '^#{1}\\s+'
+    'begin': '^#{6}\\s*'
     'end': '$'
-    'name': 'markup.heading.heading-1.gfm'
+    'name': 'markup.heading.heading-6.gfm'
     'patterns': [
       {
         'include': '$self'
@@ -57,37 +61,7 @@
     ]
   }
   {
-    'begin': '^#{2}\\s+'
-    'end': '$'
-    'name': 'markup.heading.heading-2.gfm'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-    ]
-  }
-  {
-    'begin': '^#{3}\\s+'
-    'end': '$'
-    'name': 'markup.heading.heading-3.gfm'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-    ]
-  }
-  {
-    'begin': '^#{4}\\s+'
-    'end': '$'
-    'name': 'markup.heading.heading-4.gfm'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-    ]
-  }
-  {
-    'begin': '^#{5}\\s+'
+    'begin': '^#{5}\\s*'
     'end': '$'
     'name': 'markup.heading.heading-5.gfm'
     'patterns': [
@@ -97,9 +71,39 @@
     ]
   }
   {
-    'begin': '^#{6}\\s+'
+    'begin': '^#{4}\\s*'
     'end': '$'
-    'name': 'markup.heading.heading-6.gfm'
+    'name': 'markup.heading.heading-4.gfm'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'begin': '^#{3}\\s*'
+    'end': '$'
+    'name': 'markup.heading.heading-3.gfm'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'begin': '^#{2}\\s*'
+    'end': '$'
+    'name': 'markup.heading.heading-2.gfm'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'begin': '^#{1}\\s*'
+    'end': '$'
+    'name': 'markup.heading.heading-1.gfm'
     'patterns': [
       {
         'include': '$self'
@@ -451,12 +455,6 @@
       {
         'include': 'source.cpp'
       }
-
-      # TODO: remove once new language-c package is released with 'source.cpp'
-      # scope name
-      {
-        'include': 'source.c++'
-      }
     ]
   }
   {
@@ -524,6 +522,23 @@
     'patterns': [
       {
         'include': 'source.elixir'
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*([`~]{3,})\\s*(diff|patch|rej)\\s*$'
+    'beginCaptures':
+      '0':
+        'name': 'support.gfm'
+    'end': '^\\s*\\1$'
+    'endCaptures':
+      '0':
+        'name': 'support.gfm'
+    'name': 'markup.code.diff.gfm'
+    'contentName': 'source.diff'
+    'patterns': [
+      {
+        'include': 'source.diff'
       }
     ]
   }
